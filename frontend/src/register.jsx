@@ -2,29 +2,39 @@ import { Link } from "react-router-dom";
 
 function Register() {
     return (    
-        <div>
-            <h1>Register Page</h1>
+        <div id="container">
+            <h1 id="title">Register</h1>
             <form>
-                <label for="fname">First Name: </label>
-                <input type="text" id="fname" name="fname" />
+                <div id="row-flex-box">
+                    <label for="fname">First Name: </label>
+                    <input type="text" id="fname" name="fname" />
+                </div>
                 <br></br>
-                <label for="lname">Last Name: </label>
-                <input type="text" id="lname" name="lname" />
+                <div id="row-flex-box">
+                    <label for="lname">Last Name: </label>
+                    <input type="text" id="lname" name="lname" />
+                </div>
                 <br></br>
-                <label for="salary">Salary: </label>
-                <input type="text" id="salary" name="salary" />
+                <div id="row-flex-box">
+                    <label for="salary">Salary: </label>
+                    <input type="text" id="salary" name="salary" />
+                </div>
                 <br></br>
-                <label for="age">Age: </label>
-                <input type="text" id="age" name="age" />
+                <div id="row-flex-box">
+                    <label for="age">Age: </label>
+                    <input type="text" id="age" name="age" />
+                </div>
                 <br></br>
                 <Link to="/home">
-                    <button>Register</button>
+                    <button id="register-btn">Register</button>
                 </Link>
             </form>
-            <h3>Click here to signin: </h3>
-            <Link to="/signin">
-                <button>Signin</button>
-            </Link>
+            <div id="flex-box">
+                <h3>Already registered? </h3>
+                <Link to="/signin">
+                    <a>Signin</a>
+                </Link>
+            </div>
         </div>
     )
 }

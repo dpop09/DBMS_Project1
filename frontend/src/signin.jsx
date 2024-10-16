@@ -4,19 +4,24 @@ import { Link } from "react-router-dom";
 function Signin() {
 
     return (
-        <div>
-            <h1>Signin Page</h1>
+        <div id="container">
+            <h1 id="title">Signin</h1>
             <form>
-                <label for="userid">User ID: </label>
-                <input type="text" id="userid" name="userid" />
+                <div id="row-flex-box">
+                    <label for="userid">User ID: </label>
+                    <input dtype="text" id="userid" name="userid" />
+                </div>
+                <br></br>
                 <Link to="/home">
-                    <button>Signin</button>
+                    <button id="signin-btn">Signin</button>
                 </Link>
             </form>
-            <h3>Click here to register: </h3>
-            <Link to="/register">
-                <button>Register</button>
-            </Link>
+            <div id="flex-box">
+                <h3>Not yet registered?</h3>
+                <Link to="/register">
+                    <a>Register</a>
+                </Link>
+            </div>
         </div>
     )
 }
