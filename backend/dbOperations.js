@@ -80,6 +80,23 @@ const dbOperations = {
         } catch (error) {
             console.log(error);
         }
+    },
+    getAll: async function () {
+        try {
+            const sql = 'SELECT * FROM users';
+            const response = await new Promise((resolve, reject) => {
+                db.query(sql, (err, result) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(result);
+                    }
+                });
+            });
+            return response;
+        } catch (error) {
+            console.log(error);
+        }
     }
 };
 
