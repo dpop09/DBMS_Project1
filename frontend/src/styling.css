@@ -24,7 +24,7 @@ body {
     margin-bottom: 2rem;
 }
 
-#userid, #fname, #lname, #salary, #age {
+#username, #password, #fname, #lname, #salary, #age {
     font-size: medium;
     height: 2rem;
     margin-left: 5px;

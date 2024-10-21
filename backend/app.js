@@ -1,4 +1,4 @@
-// Backend: application services, accessible by URIs
+/*// Backend: application services, accessible by URIs
 
 
 const express = require('express')
@@ -138,4 +138,43 @@ app.listen(process.env.PORT,
     () => {
         console.log("I am listening.")
     }
-);
+);*/
+
+const express = require('express');
+const cors = require('cors');
+const dbOperations = require('./dbOperations');
+
+const app = express();
+app.use(cors());
+app.use(express.json())
+app.use(express.urlencoded({extended: false}));
+
+app.post('/signin', async (request, response) => {
+    try {
+        const {username, password} = request.body;
+        const result = await dbOperations.isCredentialsValid(username, password);
+        if (result === true) {
+            await dbOperations.updateSignintime(username);
+        }
+        response.status(200).send(result);
+    } catch (error) {
+        response.status(500).send(error);
+        console.log(error);
+    }
+});
+
+app.post('/register', async (request, response) => {
+    try {
+        const {username, password, fname, lname, salary, age} = request.body;
+        let result = await dbOperations.insertNewUser(username, password, fname, lname, salary, age);
+        response.status(200).send(result);
+    } catch (error) {
+        response.status(500).send(error);
+        console.log(error);
+    }
+})
+
+// set up the web server listener
+app.listen(8081, () => {
+    console.log("I am listening.")
+});
