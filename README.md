@@ -42,9 +42,8 @@ CREATE TABLE Users(
    git clone https://github.com/dpop09/DBMS_Project1.git 
    ```
 
-3. Create a new database called `web_app` and a user `john` with the password `1234` using phpMyAdmin.
-4. Grant `john` all privileges on the `web_app` database.
-5. Modify the `.env` file in the project to configure the following:
+3. Create a new database called `web_app`
+5. Create a `.env` file in the project and configure the following:
 
    ```env
    PORT=5050
@@ -55,74 +54,66 @@ CREATE TABLE Users(
    HOST=localhost
    ```
 
-6. Rename the `dotenv` file to `.env` using the following command:
-
-   ```bash
-   move dotenv .env
-   ```
-
-7. Under the `web_app` database, create a table `names` using the following query:
+7. Under the `web_app` database, create a table `Users` using the following query:
 
    ```sql
-   CREATE TABLE names (id INTEGER PRIMARY KEY AUTO_INCREMENT, name VARCHAR(100), date_added DATE);
+   CREATE TABLE Users(
+      username VARCHAR(50) PRIMARY KEY,
+      password VARCHAR(100),
+      firstname VARCHAR(50),
+      lastname VARCHAR(50),
+      salary FLOAT,
+      age INTEGER,
+      registerday DATE,
+      signintime DATETIME
+   );
    ```
 
 ## Backend Setup
 
-1. Navigate to the Backend directory:
+1. Navigate to the backend directory:
 
    ```bash
-   cd C:\xampp\htdocs\database_javascript\project1\Backend
+   cd path\to\project\backend
    ```
 
-2. Initialize the project:
+2. Install necessary project dependencies:
 
    ```bash
-   npm init -y
+   npm install
    ```
 
-3. Install the necessary dependencies:
-
-   ```bash
-   npm install express mysql cors nodemon dotenv
-   ```
-
-4. Modify the `scripts` section in the `package.json`:
-
-   ```json
-   "scripts": {
-     "test": "echo \"Error: no test specified\" && exit 1",
-     "start": "nodemon app.js"
-   }
-   ```
-
-5. Start the Backend server:
+3. Start the Backend server:
 
    ```bash
    npm start
    ```
 
-6. You can now test the backend API by accessing endpoints such as:
-
-   ```bash
-   http://localhost:5050/getAll
-   ```
+4. You can now test the backend API by searching in your browser "http://localhost:8081/getall"
 
    This will return JSON data of the users.
 
 ## Frontend Setup
 
-1. To verify that your web server is running, create the first webpage `index.html` under `C:\xampp\htdocs` and visit:
+1. Navigate to the frontend directory:
 
    ```bash
-   http://localhost/index.html
+   cd path\to\project\frontend
    ```
 
-2. The sample frontend can be accessed via:
+2. Install the necessary project dependencies:
+
+```bash
+   npm install
+```
+
+3. Start the frontend client:
 
    ```bash
-   http://localhost/database_javascript/project1/Frontend/index.html
+   npm run dev
    ```
+
+4. Click the browser link in your terminal "http://localhost:5173/"
 
 ## Usage Instructions
 
