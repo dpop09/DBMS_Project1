@@ -12,12 +12,12 @@ function Register() {
         const lname = document.getElementById("lname").value;
         const salary = document.getElementById("salary").value;
         const age = document.getElementById("age").value;
-        if (!username || !password || !fname || !lname || !salary || !age) {
+        if (!username || !password || !fname || !lname || !salary || !age) { // check if all fields are filled
             alert("Please fill in all fields.");
             return;
         }
         try {
-            const response = await fetch('http://localhost:8081/register', {
+            const response = await fetch('http://localhost:8081/register', { // send a POST request to the backend route
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json'
@@ -25,9 +25,9 @@ function Register() {
                 body: JSON.stringify({ username: username, password: password, fname: fname, lname: lname, salary: salary, age: age })
             })
             const data = await response.json();
-            if (data === true) {
+            if (data === true) { // if the response is successful
                 navigate('/home');
-            } else {
+            } else { // if the response is unsuccessful
                 alert("Internal Server Error. Please try again later.");
             }
         } catch (error) {

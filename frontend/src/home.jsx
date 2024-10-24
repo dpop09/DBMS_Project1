@@ -12,45 +12,203 @@ function Home() {
        .catch(err => console.log(err));
     }, []);
 
-    const handleSearchName = (event) => {
+    const handleSearchName = async (event) => {
         event.preventDefault();
         const fname = document.getElementById("search-input-fname").value;
         const lname = document.getElementById("search-input-lname").value;
+        if (!fname && !lname) { // check if both fields are empty
+            alert("Please fill in at least one field.");
+            return;
+        }
+        try { // send a POST request to the backend route
+            const response = await fetch('http://localhost:8081/search-name', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({ fname: fname, lname: lname })
+            })
+            const data = await response.json();
+            if (data) { // if the response is successful, update the state variable data with the fetched data
+                setData(data);
+            } else {
+                alert("Internal Server Error. Please try again later.");
+            }
+        } catch (error) {
+            console.log(error);
+        }
         return
     };
-    const handleSearchUsername = (event) => {
+    const handleSearchUsername = async (event) => {
         event.preventDefault();
         const username = document.getElementById("search-input-username").value;
+        if (!username) {
+            alert("Please fill the field.");
+            return
+        }
+        try {
+            const response = await fetch('http://localhost:8081/search-username', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({ username: username })
+            })
+            const data = await response.json();
+            if (data) {
+                setData(data);
+            } else {
+                alert("Internal Server Error. Please try again later.");
+            }
+        } catch (error) {
+            console.log(error);
+        }
         return
     };
-    const handleSearchSalary = (event) => {
+    const handleSearchSalary = async (event) => {
         event.preventDefault();
         const salaryLow = document.getElementById("search-input-salary-low").value;
         const salaryHigh = document.getElementById("search-input-salary-high").value;
+        if (!salaryLow || !salaryHigh) {
+            alert("Please fill in both fields.");
+            return
+        }
+        try {
+            const response = await fetch('http://localhost:8081/search-salary', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({ salaryLow: salaryLow, salaryHigh: salaryHigh })
+            })
+            const data = await response.json();
+            if (data) {
+                setData(data);
+            } else {
+                alert("Internal Server Error. Please try again later.");
+            }
+        } catch (error) {
+            console.log(error);
+        }
         return
     };
-    const handleSearchAge = (event) => {
+    const handleSearchAge = async (event) => {
         event.preventDefault();
         const ageLow = document.getElementById("search-input-age-low").value;
         const ageHigh = document.getElementById("search-input-age-high").value;
+        if (!ageLow || !ageHigh) {
+            alert("Please fill in both fields.");
+            return
+        }
+        try {
+            const response = await fetch('http://localhost:8081/search-age', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({ ageLow: ageLow, ageHigh: ageHigh })
+            })
+            const data = await response.json();
+            if (data) {
+                setData(data);
+            } else {
+                alert("Internal Server Error. Please try again later.");
+            }
+        } catch (error) {
+            console.log(error);
+        }
         return
     };
-    const handleSearchAfter = (event) => {
+    const handleSearchAfter = async (event) => {
         event.preventDefault();
         const after = document.getElementById("search-input-after").value;
+        if (!after) {
+            alert("Please fill the field.");
+            return
+        }
+        try {
+            const response = await fetch('http://localhost:8081/search-after', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({ after: after })
+            })
+            const data = await response.json();
+            if (data) {
+                setData(data);
+            } else {
+                alert("Internal Server Error. Please try again later.");
+            }
+        } catch (error) {
+            console.log(error);
+        }
         return
     };
-    const handleSearchNever = (event) => {
+    const handleSearchNever = async (event) => {
         event.preventDefault();
+        try {
+            const response = await fetch('http://localhost:8081/search-never', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            })
+            const data = await response.json();
+            if (data) {
+                setData(data);
+            } else {
+                alert("Internal Server Error. Please try again later.");
+            }
+        } catch (error) {
+            console.log(error);
+        }
         return
     }
-    const handleSearchSame = (event) => {
+    const handleSearchSame = async (event) => {
         event.preventDefault();
         const same = document.getElementById("search-input-same").value;
+        if (!same) {
+            alert("Please fill the field.");
+            return
+        }
+        try {
+            const response = await fetch('http://localhost:8081/search-same', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({ same: same })
+            })
+            const data = await response.json();
+            if (data) {
+                setData(data);
+            } else {
+                alert("Internal Server Error. Please try again later.");
+            }
+        } catch (error) {
+            console.log(error);
+        }
         return
     }
-    const handleSearchToday = (event) => {
+    const handleSearchToday = async (event) => {
         event.preventDefault();
+        try {
+            const response = await fetch('http://localhost:8081/search-today', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            })
+            const data = await response.json();
+            if (data) {
+                setData(data);
+            } else {
+                alert("Internal Server Error. Please try again later.");
+            }
+        } catch (error) {
+            console.log(error); 
+        }
         return
     };
 
